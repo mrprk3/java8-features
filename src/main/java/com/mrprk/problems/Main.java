@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class Main {
 	public static void main(String[] args) {
 		List<Employee> loadAllEmp = EmpDB.loadAllEmp();
-		//Lets iterate all the records
+		// Lets iterate all the records
 		System.out.println();
 		for (Employee emp : loadAllEmp) {
 			System.out.println(emp);
@@ -47,8 +47,9 @@ public class Main {
 			System.out.println(dept);
 		});
 
-		// Lets print department and count  groupingBy()
-		Map<String, Long> groupByDeptCount = department.stream().map((dept) -> dept.getDeptName())
+		// Lets print department and count groupingBy()
+		Map<String, Long> groupByDeptCount = loadAllEmp.stream().map((emp) -> emp.getDepartment())
+				.collect(Collectors.toList()).stream().map((dept) -> dept.getDeptName())
 				.collect(Collectors.groupingBy((dept) -> dept, Collectors.counting()));
 		System.out.println(groupByDeptCount);
 
